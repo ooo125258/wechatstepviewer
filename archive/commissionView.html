@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+ <head>
+ 	<meta charset="utf-8">
+    <title>Database Information</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+ </head>
+
+ <body>
+
+ 	<!-- The header -->
+    <div class="header">
+        <a href="profileView"><img src="../assets/home.png" id="home-logo"></a>
+        <div class="buy-sell">
+            <div class="header-buy">Buy</div>
+            <label class="switch">
+                <input type="checkbox" id="checkbox" checked=False>
+                <span class="slider round"></span>
+            </label>
+            <div class="header-sell">Sell</div>
+        </div>
+        <script type="text/javascript" src="header.js"></script>
+    </div>
+
+    <div class="commissionInfo">
+        <div class="datasetProfileDescription">
+            <img src="../assets/uoft.jpg" id="cifar">
+            <div class="datasetNameDescription">
+                <h2> Dashcam Footage </h2>
+                <p> I am requesting minimum 10 hrs of labeled dashcam video
+                    (all signs, street lights, and pedestrians should be labeled
+                    with a bounding box). I am offering 1 CAD per minute of video.
+                    Ideally, the car should travel on a variety of different
+                    roads and through different weather conditions. </p>
+            </div>
+        </div>
+        <div class="datasetPreview">
+            <img src="../assets/car1.jpg" class="datasetPreviewImg">
+            <img src="../assets/car2.jpg" class="datasetPreviewImg">
+            <img src="../assets/car3.jpg" class="datasetPreviewImg">
+        </div>
+        <div class="datasetStats">
+            <table id="dataStats">
+                <tr>
+                    <td><b>Price:</b></td>
+                    <td>1 CAD / min</td>
+                </tr>
+                <tr>
+                    <td><b>Quality:</b></td>
+                    <td>HIGH</td>
+                </tr>
+                <tr>
+                    <td><b>User Credibility:</b></td>
+                    <td>3.8 / 5</td>
+                </tr>
+
+                <tr>
+                    <td><b>Citations</b></td>
+                    <td>5</td>
+                </tr>
+
+            </table>
+            <input id="contact" type='submit' value='Contact Buyer'/>
+        </div>
+    </div>
+ </body>
+</html>

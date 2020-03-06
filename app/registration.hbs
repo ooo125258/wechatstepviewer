@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration for new users</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <!--
+    <form id='regisBox' class='start' action="/registration" method="post">
+        <h1 class="start-element">New User Registration</h1>
+        <input class="start-element" id="emailInput" type="text" placeholder="*Username" name="name"/>
+        <input class="start-element" id="passwordInput" type="text" placeholder="*Password" name="password"/>
+        <input class="start-element" id="nicknameInput" type="text" placeholder="" name="nickname"/>
+        <input class="start-element" id="emailInput" type="text" placeholder="Username" name="name"/>
+
+
+        <input class="start-element" id=regisButton type='submit' class='return' value='register' />
+        <label id='loginStatusBar' class='Status'></label>
+    </form>
+    -->
+    <div id='regisBox'>
+        <form action="/registration" method="post">
+            <h1>New User Registration</h1>
+            <table id="regisTable">
+
+                <tr>
+                    <td class='regis_labels' >*Email:</td>
+                    <td><input id='emailInput' type='text' name='email'></td>
+                </tr>
+
+                <tr>
+                    <td class='regis_labels'>*Password:</td>
+                    <td><input id='passwordInput' type='password' name='password'></td>
+                </tr>
+
+                <tr>
+                    <td class='regis_labels'>Nickname/Username:</td>
+                    <td><input id='nicknameInput' type='text' name='nickname'></td>
+                </tr>
+
+                <tr>
+                    <td class='regis_labels'>Phone:</td>
+                    <td><input id='phoneInput' type='text' name='phone'></td>
+                </tr>
+
+                <tr>
+                    <td class='regis_labels'>True Name:</td>
+                    <td><input id='truenameInput' type='text' name='truename'></td>
+                </tr>
+
+
+                <tr>
+                    <td class='regis_labels'>Date Of Birth, MM/DD/YYYY:</td>
+                    <td><input id='birthdayInput' type='text' name='birthday'></td>
+                </tr>
+
+                <tr>
+                    <td class='regis_labels'>Address:</td>
+                    <td><input id='addressInput' type='text' name='address'></td>
+                </tr>
+
+                <tr>
+                    <td class='regis_labels'>Zip:</td>
+                    <td><input id='zipInput' type='text' name='zip'></td>
+                </tr>
+
+            </table>
+
+            <button id='regisButton' type='submit' value="">Register</button>
+
+            <t class="status">{{message}}</t>
+
+        </form>
+    </div>
+    <!--<script type="text/javascript" src="registration.js"></script>-->
+</body>
+</html>

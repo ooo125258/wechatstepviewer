@@ -1,0 +1,54 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 7-Nov-2018, 8:41:13 PM
+    Author     : Muhtasim
+*/
+
+body {  
+    margin: 0;
+    background-color: cadetblue;
+}
+
+#datasetpanel {
+    position: absolute;
+    top: 200px;
+    left: 100px;
+    width: 600px;
+    background-color: grey;
+    overflow: auto;
+}
+
+.profilepic {
+    width: 100px;
+    height: 100px;
+    float: left;
+    margin-right: 20px;
+}
+
+.dataset {
+   float: left;
+   display: block;
+   width: 600px;
+   margin-bottom: 2px;
+   border: 1px solid black;
+   overflow: auto;
+}
+
+.datasetName {
+   float: left;
+   display: block;  
+   width: 480px;
+   margin-bottom: 2px;
+}
+
+.datasetDetails {
+   float: left;
+   display: block;  
+   width: 480px; 
+   min-height: 80px;
+   white-space: pre;
+}

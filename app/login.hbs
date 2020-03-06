@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <form id='wrapper' class='start' action="login" method="post">
+            <h1 class="start-element">Login</h1>
+            <input class="start-element" id="emailInput" type="text" placeholder="Email" name="email">
+            <input class="start-element" id="passwordInput" type="password" placeholder="Password" name="password"/>
+            <input class="start-element" class='return' id=loginButton type='submit' value='Login'/>
+            <a class="start-element" href="forgetPassword">Forget Password?</a>
+            <a class="start-element" href="registration">Not a member? Sign up.</a>
+            <label id='loginStatusBar' class='Status'></label>
+            <t class="status"> {{{message}}} </t>
+        </form>
+        <!---<script type="text/javascript" src="login.js"></script>-->
+    </body>
+</html>

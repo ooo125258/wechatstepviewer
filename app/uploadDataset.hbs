@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration for new users</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div class="header">
+        <a href="profileView"><img src="home.png" id="home-logo"></a>
+        <a id="browseButton" href="browsingViewBuy"> Browse </a>
+        <a id="logoutButton" href="logout"> Logout </a>
+    </div>
+
+    <div id='upload_page'>
+        <form action="/uploadDataset" method="post" enctype="multipart/form-data">
+            <h1> Upload Dataset </h1>
+            <table action="/uploadDataset" method="post">
+
+                <tr>
+                    <td class='regis_labels' >Title*</td>
+                    <td><input type='text' name='title'></td>
+                </tr>
+
+                <tr>
+                    <td class='regis_labels'>Description*</td>
+                    <td><textarea rows="10" cols="30" type='text' name='description'></textarea>
+                </tr>
+
+                <tr>
+                    <td class='regis_labels'>Price*</td>
+                    <td><input id='nicknameInput' type='text' name='price'></td>
+                </tr>
+
+                <tr>
+                    <td class='regis_labels'>Database Profile Image</td>
+                    <td><input type="file" name="main_image" accept="image/png, image/jpeg"></td>
+                </tr>
+
+                <tr>
+                    <td class='regis_labels'>Informative Image</td>
+                    <td><input type="file" name="comp_image_1" accept="image/png, image/jpeg"></td>
+                </tr>
+
+                <tr>
+                    <td class='regis_labels'>Informative Image</td>
+                    <td><input type="file" name="comp_image_2" accept="image/png, image/jpeg"></td>
+                </tr>
+
+                <tr>
+                    <td class='regis_labels'>Informative Image</td>
+                    <td><input type="file" name="comp_image_3" accept="image/png, image/jpeg"></td>
+                </tr>
+
+            </table>
+
+
+
+            <button id='uploadButton' type='submit' value="">Upload</button>
+
+            <t class="status">{{{message}}}</t>
+        </form>
+    </div>
+    <!--<script type="text/javascript" src="registration.js"></script>-->
+</body>
+</html>

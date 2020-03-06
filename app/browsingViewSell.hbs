@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en">
+    <head>
+        <title>Browsing View for Buying datasets</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="header">
+            <a href="profileView"><img src="home.png" id="home-logo"></a>
+            <div class="buy-sell">
+                <div class="header-buy">Buy</div>
+                <label class="switch">
+                    <input type="checkbox" id="checkbox"  checked=True>
+                    <span class="slider round"></span>
+                </label>
+                <div class="header-sell">Sell</div>
+                <script src="header.js"></script>
+            </div>
+            <a id="logoutButton" href="logout"> Logout </a>
+        </div>
+        <div id="requestpanel">
+            {{#each requests}}
+            <a href="/{{this._id}}">
+                <div class="dataset">
+                    <img class="profilepic" src={{this.main_image}}>
+                    <div class="datasetName"><t><b>{{this.title}}</b></t></div>
+                    <div class="datasetDetails"><t>Description: {{this.description}}</t></div>
+                </div>
+            </a>
+            {{/each}}
+        </div>
+    </body>
+</html>

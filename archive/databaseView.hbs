@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+ <head>
+ 	<meta charset="utf-8">
+    <title>Database Information</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+ </head>
+
+ <body>
+
+ 	<!-- The header -->
+    <div class="header">
+        <a href="profileView.html"><img src="../assets/home.png" id="home-logo"></a>
+        <div class="buy-sell">
+            <div class="header-buy">Buy</div>
+            <label class="switch">
+                <input type="checkbox" id="checkbox">
+                <span class="slider round"></span>
+            </label>
+            <div class="header-sell">Sell</div>
+        </div>
+        <script type="text/javascript" src="header.js"></script>
+    </div>
+
+    <div class="datasetInfo">
+        <div class="datasetProfileDescription">
+            <img src="../assets/cifar.png" id="cifar">
+            <div class="datasetNameDescription">
+                <h2> fMRI Scans </h2>
+                <p> This is a dataset of 1000 anonymized patient resting state fMRI brain scans,
+                    with corresponding medical histories. This dataset is a
+                    multi-site collaboration between the UHN, Sick Kids, and
+                    Mass General Hospital. The fMRI files are in the NiFTI2
+                    file format, and patient medical history is stored in an
+                    excel file. All proceeds from the sale of this dataset will
+                    go towards funding more fMRI data-collection projects. </p>
+            </div>
+        </div>
+        <div class="datasetPreview">
+            <img src="../assets/fmri_preview.png" class="datasetPreviewImg">
+            <img src="../assets/fmri_preview_4.jpg" class="datasetPreviewImg">
+            <img src="../assets/fmri_preview_2.jpg" class="datasetPreviewImg">
+        </div>
+        <div class="datasetStats">
+            <table id="dataStats">
+                <tr>
+                    <td><b>Price:</b></td>
+                    <td>150 CAD</td>
+                </tr>
+                <tr>
+                    <td><b>Size:</b></td>
+                    <td>95 GB</td>
+                </tr>
+                <tr>
+                    <td><b>User Credibility:</b></td>
+                    <td>4.3 / 5</td>
+                </tr>
+                <tr>
+                    <td><b>Quality Percentile:</b></td>
+                    <td>83rd</td>
+                </tr>
+                <tr>
+                    <td><b>Citations</b></td>
+                    <td>104</td>
+                </tr>
+
+            </table>
+            <input id="contact" type='submit' value='Contact Seller'/>
+        </div>
+    </div>
+ </body>
+</html>

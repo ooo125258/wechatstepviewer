@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en">
+    <head>
+        <title>Profile View</title>
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="header">
+            <a href="profileView"><img src="home.png" id="home-logo"></a>
+            <a id="browseButton" href="browsingViewBuy"> Browse </a>
+            <a id="logoutButton" href="logout"> Logout </a>
+        </div>
+            <t> Profile Description: {{profile_description}} </t>
+            <form id='wrapper' class='start' action="changeUserInfo" method="post" enctype="multipart/form-data">
+                <div id="profile_main">
+
+                    <div id='profilepiccontainer'><img id="profilepic" src="{{profile_pic_src}}"></div>
+                    <table id="profileTable">
+
+                    <tr>
+                        <td class='profile_labels' >*Email:</td>
+                        <td><input id='email_profile_input' type='text' name='newemail' value={{newemail}}></td>
+                    </tr>
+
+                    <tr>
+                        <td class='profile_labels'>Nickname/Username:</td>
+                        <td><input id='nickname_profile_input' type='text' name='newnickname' value={{newnickname}}></td>
+                    </tr>
+
+                    <tr>
+                        <td class='profile_labels'>Phone:</td>
+                        <td><input id='phone_profile_input' type='text' name='newphone' value={{newphone}}></td>
+                    </tr>
+
+                    <tr>
+                        <td class='profile_labels'>True Name:</td>
+                        <td><input id='truename_profile_input' type='text' name='newtruename' value={{newtruename}}></td>
+                    </tr>
+                    <tr>
+                        <td class='profile_labels'>Date Of Birth, MM/DD/YYYY:</td>
+                        <td><input id='birthday_profile_input' type='text' name='newbirthday' value={{newbirthday}}></td>
+                    </tr>
+
+                    <tr>
+                        <td class='profile_labels'>Address:</td>
+                        <td><input id='address_profile_input' type='text' name='newaddress' value={{newaddress}}></td>
+                    </tr>
+
+                    <tr>
+                        <td class='profile_labels'>Zip:</td>
+                        <td><input id='zip_profile_input' type='text' name='newzip' value={{newzip}}></td>
+                    </tr>
+                    <tr>
+                        <td class='profile_labels'>Description:</td>
+                        <td><input id='zip_profile_input' type='text' name='newfurtherinfo' value={{newfurtherinfo}}></td>
+                    </tr>
+                    <tr>
+                        <td class='profile_labels'>Profile Picture:</td>
+                        <td><input type="file" name="profile_pic" accept="image/png, image/jpeg"></td>
+                    </tr>
+
+                    </table>
+                    <button id='editProfileButton' type='submit' value="">Save Edited Profile</button>
+                    <t class="status">{{message}}</t>
+                    <!--<input id='profiledescriptioncontainer' name=profile_description type="text" value={{profile_description}} >  -->
+                   <a href="/forgetPassword"> Forget Password </a>
+                   <a href="/uploadDataset"> Upload Dataset</a>
+                   <a href="/uploadRequest"> Upload Request </a>
+
+
+                </div>
+            </form>
+        </div>
+        <script type="text/javascript" src="profileViewScript.js"></script>
+    </body>
+</html>

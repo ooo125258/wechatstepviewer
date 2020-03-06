@@ -1,0 +1,84 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 6-Nov-2018, 10:15:44 PM
+    Author     : Muhtasim
+*/
+body {  
+    margin: 0;
+    background-color: cadetblue;
+}
+
+
+#profilepiccontainer {
+    top: 100px;
+    left: 100px;
+    text-align: center;
+    font-size: 20px;
+    margin: 0px;
+    position: relative;
+    left: 100px;
+    width: 200px;
+    height: 250px;
+    float: left;
+    background-color: grey;
+    border-collapse: collapse;
+    border: 1px solid black;
+}
+
+#profilepic {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    float: left;
+}
+
+#profiledescriptioncontainer {
+    position: absolute;
+    top: 100px;
+    float: left;
+    width: 400px;
+    height: 400px;
+    left: 500px;
+    border-collapse: collapse;
+    border: 1px solid black;
+    background-color: grey
+}
+
+.d1 {    
+    position: absolute;
+    float: left;   
+    top: 600px;
+    left: 200px;
+    width: 600px;    
+}
+
+.d2 {    
+    position: absolute;
+    float: left;
+    left: 250px;
+    width: 600px;    
+}
+
+#userinteractionhistory {
+    position: absolute;
+    top: 40px;
+    width: 600px;
+    max-width: 1000px;
+    text-align: center;
+    border-collapse: collapse;
+    border: 1px solid black;
+    background-color: darkblue;
+    color: white;
+    overflow: auto;
+}
+
+#uploaddataset {
+    position: absolute;
+    background-color: green;
+    color: white;
+}
+

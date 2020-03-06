@@ -1,0 +1,268 @@
+/* E4 server.js */
+'use strict';
+const log = console.log;
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const { ObjectID } = require('mongodb');
+
+// Mongoose
+const { mongoose } = require('./db/mongoose');
+const { Restaurant } = require('./models/restaurant')
+
+// Express
+const port = process.env.PORT || 3000
+const app = express();
+app.use(bodyParser.json());
+
+/// Route for adding restaurant, with *no* reservations (an empty array).
+/* 
+Request body expects:
+{
+	"name": <restaurant name>
+	"description": <restaurant description>
+}
+Returned JSON should be the database document added.
+*/
+// POST /restaurants
+app.post('/restaurants', (req, res) => {
+	// Add code here
+	;
+
+	// Create a new restaurant
+	const restaurant = new Restaurant({
+		name: req.body.name,
+		description: req.body.description
+	});
+	// save restaurant to database
+	restaurant.save().then((result) => {
+		// Save and send object that was saved
+		res.send({result})
+	}, (error) => {
+		res.status(400).send(error) // 400 for bad request
+	})
+})
+
+
+/// Route for getting all restaurant information.
+// GET /restaurants
+app.get('/restaurants', (req, res) => {
+	// Add code here
+	Restaurant.find().then((restaurants) => {
+		res.send({ restaurants }) // put in object in case we want to add other properties
+	}, (error) => {
+		res.status(400).send(error)
+	})
+})
+
+
+/// Route for getting information for one restaurant.
+// GET /restaurants/id
+app.get('/restaurants/:id', (req, res) => {
+	// Add code here
+	const id = req.params.id // the id is in the req.params object
+
+	// Good practise is to validate the id
+	if (!ObjectID.isValid(id)) {
+		return res.status(404).send()
+	}
+
+	// Otheriwse, findById
+	Restaurant.findById(id).then((restaurant) => {
+		if (!restaurant) {
+			res.status(404).send()
+		} else {
+			res.send({ restaurant })
+		}
+		
+	}).catch((error) => {
+		res.status(400).send(error)
+	})
+})
+
+
+/// Route for adding reservation to a particular restaurant.
+/* 
+Request body expects:
+{
+	"time": <time>
+	"people": <number of people>
+}
+*/
+// Returned JSON should have the restaurant database 
+//   document that the reservation was added to, AND the reservation subdocument:
+//   { "reservation": <reservation subdocument>, "restaurant": <entire restaurant document>}
+// POST /restaurants/id
+//curl -H "Content-Type: application/json" -d '{"time":"17:20", "people":"2"}' http://localhost:3000/restaurants/5c070f612b560d1d777c8a6b
+app.post('/restaurants/:id', (req, res) => {
+	// Add code here
+	//find the restaurant
+	const id = req.params.id
+	//
+	if (!ObjectID.isValid(id)) {
+		return res.status(404).send()
+	}
+
+	let rst;
+	Restaurant.findById(id).then((restaurant) => {
+		if (!restaurant) {
+			res.status(404).send()
+		} else {
+			rst = restaurant.reservations
+			rst.push({time: req.body.time, people: req.body.people});
+			//restaurant.update({$set: {reservations: rst}}, {new: true}).then((status) => {
+				
+			restaurant.update({$push: {reservations: {time: req.body.time, people: req.body.people}}}, {new: true}).then((status) => {
+				if (!status) {
+					res.status(404).send()
+				} else {
+					res.send({ 'reservation': reservations,
+						'restaurant': restaurant })
+				}
+			}).catch((error) => {
+				res.status(400).send(error)
+			})
+		}	
+	}).catch((error) => {
+		res.status(400).send(error)
+	})
+})
+
+
+/// Route for getting information for one reservation of a restaurant (subdocument)
+// GET /restaurants/id
+app.get('/restaurants/:id/:resv_id', (req, res) => {
+	// Add code here
+	const id = req.params.id
+	const resv_id = req.params.resv_id
+	if (!ObjectID.isValid(id)) {
+		return res.status(404).send()
+	}
+	if (!ObjectID.isValid(resv_id)) {
+		return res.status(404).send()
+	}
+
+	//Find the restaurant first
+	Restaurant.findById(id).then((restaurant) => {
+		if (!restaurant) {
+			res.status(404).send()
+		} else {
+			let reservation = restaurant.reservations.id(resv_id);
+			if (!reservation) {
+				res.status(404).send()
+			} else {
+				res.send({ reservation })
+			}
+		}
+		
+	}).catch((error) => {
+		res.status(400).send(error)
+	})
+})
+
+
+/// Route for deleting reservation
+// Returned JSON should have the restaurant database
+//   document from which the reservation was deleted, AND the reservation subdocument deleted:
+//   { "reservation": <reservation subdocument>, "restaurant": <entire restaurant document>}
+// DELETE restaurant/<restaurant_id>/<reservation_id>
+app.delete('/restaurants/:id/:resv_id', (req, res) => {
+	// Add code here
+	const id = req.params.id
+	const resv_id = req.params.resv_id
+	if (!ObjectID.isValid(id)) {
+		return res.status(404).send()
+	}
+	if (!ObjectID.isValid(resv_id)) {
+		return res.status(404).send()
+	}
+
+	//again, first, find the restaurant
+	let rst;
+	Restaurant.findById(id).then((restaurant) => {
+		if (!restaurant) {
+			res.status(404).send()
+		} else {
+			rst = restaurant.reservations
+			let removed_doc = rst.id(resv_id).remove();
+			if (!removed_doc){
+				res.status(404).send()
+			}else{
+				restaurant.update({$set: {reservations: rst}}, {new: true}).then((status) => {
+					if (!status) {
+						res.status(404).send()
+					} else {
+						res.send({ 'reservation': removed_doc,
+							'restaurant': restaurant })
+					}
+				}).catch((error) => {
+					res.status(400).send(error)
+				})
+			}
+		}	
+	}).catch((error) => {
+		res.status(400).send(error)
+	})
+	
+})
+
+
+/// Route for changing reservation information
+/* 
+Request body expects:
+{
+	"time": <time>
+	"people": <number of people>
+}
+*/
+// Returned JSON should have the restaurant database
+//   document in which the reservation was changed, AND the reservation subdocument changed:
+//   { "reservation": <reservation subdocument>, "restaurant": <entire restaurant document>}
+// PATCH restaurant/<restaurant_id>/<reservation_id>
+app.patch('/restaurants/:id/:resv_id', (req, res) => {
+	// Add code here
+	const id = req.params.id
+	const resv_id = req.params.resv_id
+	if (!ObjectID.isValid(id)) {
+		return res.status(404).send()
+	}
+	if (!ObjectID.isValid(resv_id)) {
+		return res.status(404).send()
+	}
+
+	//again, first, find the restaurant
+	let rst;
+	Restaurant.findById(id).then((restaurant) => {
+		if (!restaurant) {
+			res.status(404).send()
+		} else {
+			rst = restaurant.reservations
+			let removed_doc = rst.id(resv_id);
+			if (!removed_doc){
+				res.status(404).send()
+			}else{
+				removed_doc.time = req.body.time
+				removed_doc.people = req.body.people
+				restaurant.update({$set: {reservations: rst}}, {new: true}).then((status) => {
+					if (!status) {
+						res.status(404).send()
+					} else {
+						res.send({ 'reservation': removed_doc,
+							'restaurant': restaurant })
+					}
+				}).catch((error) => {
+					res.status(400).send(error)
+				})
+			}
+		}	
+	}).catch((error) => {
+		res.status(400).send(error)
+	})
+})
+
+
+//////////
+
+app.listen(port, () => {
+	log(`Listening on port ${port}...`)
+});

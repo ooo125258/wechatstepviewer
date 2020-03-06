@@ -1,0 +1,1 @@
+Please notice, although the link between registration.html and login.html is built, the data is not shared yet. The user added in registration.html will not be updated by login.html.

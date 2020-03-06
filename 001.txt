@@ -1,0 +1,7 @@
+mongodb+srv://user01:password01@testcluster-8lpn1.mongodb.net/test?retryWrites=true&w=majority
+{ todayTS: 1567310400,
+  mondayTS: 1566792000,
+  firstDayTS: 1567310400 }
+operation successful
+{ _id: 5d6bdaa09a8174124c2b59be, date: 1567310400, steps: 11000 }
+1567351974.456
