@@ -21,7 +21,7 @@
     "handlebars": "^4.1.2",
     "hbs": "^4.0.4",
     "jsonwebtoken": "^8.4.0",
-    "moment": "^2.24.0",
+    "moment": "^2.29.2",
     "mongodb": "^3.2.7",
     "mongoose": "^5.3.12",
     "nodemailer": "^4.7.0",
